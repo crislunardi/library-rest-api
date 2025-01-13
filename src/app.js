@@ -1,15 +1,15 @@
 import express from "express";
-import conectaNaDataBase from "./config/dbConnect.js";
-import routes from "./routes/index.js"; 
+import connectToDatabase from "./config/dbConnect.js";
+import routes from "./routes/index.js";
 
-const conexao = await conectaNaDataBase();
+const connection = await connectToDatabase();
 
-conexao.on("error", (error) => {
-    console.error("Erro ao conectar com a base de dados:", error);
+connection.on("error", (error) => {
+    console.error("Error connecting to the database:", error);
 });
 
-conexao.once("open", () => {
-    console.log("Conectado com a base de dados!");
+connection.once("open", () => {
+    console.log("Connected to the database!");
 });
 
 const app = express();
